@@ -23,8 +23,8 @@
  *
  */
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
+const LES_PAUL_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/1/1c/Full_front_R9_Les_Paul.jpg";
 const CURB_POSTER_URL =
   "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
 const EAST_LOS_HIGH_POSTER_URL =
@@ -32,10 +32,9 @@ const EAST_LOS_HIGH_POSTER_URL =
 
 // This is an array of strings (TV show titles)
 let titles = [
-  "Fresh Prince of Bel Air",
+  "Gibson Les Paul",
   "Curb Your Enthusiasm",
   "East Los High",
-  "Gotham",
 ];
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
@@ -53,7 +52,7 @@ function showCards() {
     // own data, you'll need to do something totally different here.
     let imageURL = "";
     if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
+      imageURL = LES_PAUL_URL;
     } else if (i == 1) {
       imageURL = CURB_POSTER_URL;
     } else if (i == 2) {
