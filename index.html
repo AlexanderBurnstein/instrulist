@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Instruments" />
+    <!-- Makes special characters work-->
+    <meta charset="UTF-8">
+    <title>InstruList</title>
+    <meta name="Instrument Home Page" content="A Catalog of Instruments" />
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
   </head>
 
   <body>
     <header class="main-header">
-      <h1 class="title">InstruList</h1>
+      <img class="logo" src="https://i.ibb.co/YF08KWJ8/Instrulist.png" alt="InstruList Logo" />
     </header>
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">
-        <h2>Instrument</h2>
-        <img src="" alt="TV Show Poster" />
+        <h2>Instrument Name</h2>
+        <img src="" alt="Musical Instrument Picture" />
         <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-          <li>Bullet Point 4</li>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
         </ul>
       </div>
     </div>
     <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
+      <button onclick="addCard()">Add Card</button>
       <button onclick="removeLastCard();">Remove A Card!</button>
     </div>
   </body>

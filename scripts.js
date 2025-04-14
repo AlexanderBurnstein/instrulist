@@ -25,28 +25,41 @@
 
 const LES_PAUL_URL =
   "https://upload.wikimedia.org/wikipedia/commons/1/1c/Full_front_R9_Les_Paul.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
+const JAZZ_BASS_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/5/51/Fender_Jazz_Bass.jpg";
+const YAMAHA_GRAND_PIANO_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/c/c4/Piano_for_2_Players_Outside.jpg";
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Gibson Les Paul",
-  "Curb Your Enthusiasm",
-  "East Los High",
+// This is an array of Objects(instruments)
+let instruments = [
+  {
+    name: "Gibson Les Paul",
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Full_front_R9_Les_Paul.jpg",
+    features: ["Electric Guitar", "Mahogany Body"]
+  },
+  {
+    name: "Fender Jazz Bass",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Fender_Jazz_Bass.jpg",
+    features: ["4-string Bass", "Smooth Tone"]
+  },
+  {
+    name: "Yamaha Grand Piano",
+    image: "https://upload.wikimedia.org/wikipedia/commons/c/c4/Piano_for_2_Players_Outside.jpg",
+    features: ["88 Keys", "Classic Grand"]
+  }
 ];
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
 // This function adds cards the page to display the data in the array
+// Look into diff ways of doing this forloop ***
 function showCards() {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+  for (let i = 0; i < instruments.length; i++) {
+    let instrument = instruments[i];
 
     // This part of the code doesn't scale very well! After you add your
     // own data, you'll need to do something totally different here.
@@ -54,31 +67,31 @@ function showCards() {
     if (i == 0) {
       imageURL = LES_PAUL_URL;
     } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
+      imageURL = JAZZ_BASS_URL;
     } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
+      imageURL = YAMAHA_GRAND_PIANO_URL;
     }
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
+    editCardContent(nextCard, instrument.name, instrument.image); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, newInstrument, newImageURL) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+  cardHeader.textContent = newInstrument;
 
   const cardImage = card.querySelector("img");
   cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+  cardImage.alt = newInstrument + " Poster";
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
   // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
+  console.log("new card:", newInstrument, "- html: ", card);
 }
 
 // This calls the addCards() function when the page is first loaded
@@ -92,6 +105,6 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
+  instruments.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
 }
