@@ -5,22 +5,89 @@
     <meta charset="UTF-8">
     <title>InstruList</title>
     <meta name="Instrument Home Page" content="A Catalog of Instruments" />
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
   </head>
 
   <body>
     <header class="main-header">
-      <img class="logo" src="https://i.ibb.co/YF08KWJ8/Instrulist.png" alt="InstruList Logo" />
+      <!-- Logo on the left -->
+      <img class="logo" src="InstrulistImages/Instrulist.png" alt="InstruList Logo" />
+
+      <!-- Filter Buttons in the center -->
+      <div class="filter-container" id="filter-buttons">
+        <button class="filter-btn active">All Instruments</button>
+        <button class="filter-btn">Guitars</button>
+        <button class="filter-btn">Synthesizers</button>
+        <button class="filter-btn">Piano</button>
+        <button class="filter-btn">Bass</button>
+        <button class="filter-btn">Woodwinds</button>
+        <button class="filter-btn">Percussion</button>
+      </div>
+
+      <!-- Search bar on the right -->
+      <div class="search-bar-container">
+        <input type="text" id="search-bar" placeholder="Search instruments..." />
+        <button class="search-btn">Search</button>
+      </div>
     </header>
-    <div id="card-container"></div>
+    
+    <div id="card-container">
+      <!-- All Instruments Category -->
+      <div class="category">
+        <h2 class="category-title">All Instruments</h2>
+        <div class="card-slider-wrapper" id="all-instruments-cards">
+          <!-- All Instruments cards will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Guitars Category -->
+      <div class="category">
+        <h2 class="category-title">Guitars</h2>
+        <div class="card-slider-wrapper" id="guitar-cards">
+          <!-- Guitar cards will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Synthesizers Category -->
+      <div class="category">
+        <h2 class="category-title">Synthesizers</h2>
+        <div class="card-slider-wrapper" id="synthesizer-cards">
+          <!-- Synthesizer cards will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Piano Category -->
+      <div class="category">
+        <h2 class="category-title">Piano</h2>
+        <div class="card-slider-wrapper" id="piano-cards">
+          <!-- Piano cards will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Bass Category -->
+      <div class="category">
+        <h2 class="category-title">Bass</h2>
+        <div class="card-slider-wrapper" id="bass-cards">
+          <!-- Bass cards will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Drums Category -->
+      <div class="category">
+        <h2 class="category-title">Drums</h2>
+        <div class="card-slider-wrapper" id="drum-cards">
+          <!-- Drum cards will be dynamically added here -->
+        </div>
+      </div>
+    </div>
     <div class="card" style="display: none">
       <div class="card-content">
-        <h2>Instrument Name</h2>
         <img src="" alt="Musical Instrument Picture" />
+        <h2>Instrument Name</h2>
         <ul>
           <li>Feature 1</li>
-          <li>Feature 2</li>
         </ul>
       </div>
     </div>

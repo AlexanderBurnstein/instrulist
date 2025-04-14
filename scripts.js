@@ -23,70 +23,210 @@
  *
  */
 
-const LES_PAUL_URL =
-  "https://upload.wikimedia.org/wikipedia/commons/1/1c/Full_front_R9_Les_Paul.jpg";
-const JAZZ_BASS_URL =
-  "https://upload.wikimedia.org/wikipedia/commons/5/51/Fender_Jazz_Bass.jpg";
-const YAMAHA_GRAND_PIANO_URL =
-  "https://upload.wikimedia.org/wikipedia/commons/c/c4/Piano_for_2_Players_Outside.jpg";
-
 // This is an array of Objects(instruments)
 let instruments = [
+  // Guitars
   {
     name: "Gibson Les Paul",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Full_front_R9_Les_Paul.jpg",
-    features: ["Electric Guitar", "Mahogany Body"]
+    image: "InstrulistImages/LesPaul.png",
+    instrumentType: "Guitar"
   },
+  {
+    name: "Taylor Acoustic Guitar",
+    image: "InstrulistImages/TaylorAcoustic.png",
+    instrumentType: "Guitar"
+  },
+  {
+    name: "Fender Stratocaster",
+    image: "InstrulistImages/FenderStrat.png",
+    instrumentType: "Guitar"
+  },
+
+  // Synthesizers
+  {
+    name: "Moog Minimoog",
+    image: "InstrulistImages/MiniMoog.png",
+    instrumentType: "Synthesizer"
+  },
+  {
+    name: "ARP 2600",
+    image: "InstrulistImages/ARP2600.png",
+    instrumentType: "Synthesizer"
+  },
+  {
+    name: "Roland Juno-106",
+    image: "InstrulistImages/Juno106.png",
+    instrumentType: "Synthesizer"
+  },
+
+  // Pianos
+  {
+    name: "Yamaha Upright Piano",
+    image: "InstrulistImages/UprightPiano.png",
+    instrumentType: "Piano"
+  },
+  {
+    name: "Steinway Grand Piano",
+    image: "InstrulistImages/SteinwayGrand.png",
+    instrumentType: "Piano"
+  },
+  {
+    name: "Wurlitzer 200",
+    image: "InstrulistImages/Wurlitzer200.png",
+    instrumentType: "Piano"
+  },
+  {
+    name: "Fender Rhodes",
+    image: "InstrulistImages/Fender Rhodes.png",
+    instrumentType: "Piano"
+  },
+
+  // Bass
   {
     name: "Fender Jazz Bass",
-    image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Fender_Jazz_Bass.jpg",
-    features: ["4-string Bass", "Smooth Tone"]
+    image: "InstrulistImages/FenderJazzBass.png",
+    instrumentType: "Bass"
   },
   {
-    name: "Yamaha Grand Piano",
-    image: "https://upload.wikimedia.org/wikipedia/commons/c/c4/Piano_for_2_Players_Outside.jpg",
-    features: ["88 Keys", "Classic Grand"]
-  }
+    name: "Fender Precision Bass",
+    image: "InstrulistImages/PBass.png",
+    instrumentType: "Bass"
+  },
+  {
+    name: "Upright Bass",
+    image: "InstrulistImages/UprightBass.png",
+    instrumentType: "Bass"
+  },
+
+  // Drums
+  {
+    name: "Roland V-Drums",
+    image: "InstrulistImages/ElectricDrums.png",
+    instrumentType: "Drums"
+  },
+  {
+    name: "DW Drum Kit",
+    image: "InstrulistImages/DWDrums.png",
+    instrumentType: "Drums"
+  },
+  {
+    name: "Ludwig Drum Kit",
+    image: "InstrulistImages/LudwigDrums.png",
+    instrumentType: "Drums"
+  },
 ];
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
-// This function adds cards the page to display the data in the array
-// Look into diff ways of doing this forloop ***
-function showCards() {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
-
-  for (let i = 0; i < instruments.length; i++) {
-    let instrument = instruments[i];
-
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = LES_PAUL_URL;
-    } else if (i == 1) {
-      imageURL = JAZZ_BASS_URL;
-    } else if (i == 2) {
-      imageURL = YAMAHA_GRAND_PIANO_URL;
-    }
-
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, instrument.name, instrument.image); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
+// Function to shuffle an array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
+  return array;
 }
 
-function editCardContent(card, newInstrument, newImageURL) {
+// This function adds cards the page to display the data in the array
+function showCards() {
+  const allInstrumentsContainer = document.getElementById("all-instruments-cards");
+  const guitarCardsContainer = document.getElementById("guitar-cards");
+  const synthesizerCardsContainer = document.getElementById("synthesizer-cards");
+  const pianoCardsContainer = document.getElementById("piano-cards");
+  const bassCardsContainer = document.getElementById("bass-cards");
+  const drumCardsContainer = document.getElementById("drum-cards");
+
+  // Clear existing cards
+  allInstrumentsContainer.innerHTML = "";
+  guitarCardsContainer.innerHTML = "";
+  synthesizerCardsContainer.innerHTML = "";
+  pianoCardsContainer.innerHTML = "";
+  bassCardsContainer.innerHTML = "";
+  drumCardsContainer.innerHTML = "";
+
+  // Shuffle the instruments array for the All Instruments section
+  const shuffledInstruments = shuffleArray([...instruments]);
+
+  // Loop through the instruments array and add cards to the appropriate category
+  instruments.forEach((instrument) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    // Add the image
+    const img = document.createElement("img");
+    img.src = instrument.image;
+    img.alt = instrument.name;
+    card.appendChild(img);
+
+    // Add the instrument name
+    const name = document.createElement("h3");
+    name.classList.add("instrument-name");
+    name.textContent = instrument.name;
+    card.appendChild(name);
+
+    // Add the instrument type
+    const type = document.createElement("p");
+    type.classList.add("instrument-type");
+    type.textContent = instrument.instrumentType;
+    card.appendChild(type);
+
+    // Append the card to the appropriate category
+    if (instrument.instrumentType === "Guitar") {
+      guitarCardsContainer.appendChild(card);
+    } else if (instrument.instrumentType === "Synthesizer") {
+      synthesizerCardsContainer.appendChild(card);
+    } else if (instrument.instrumentType === "Piano") {
+      pianoCardsContainer.appendChild(card);
+    } else if (instrument.instrumentType === "Bass") {
+      bassCardsContainer.appendChild(card);
+    } else if (instrument.instrumentType === "Drums") {
+      drumCardsContainer.appendChild(card);
+    }
+  });
+
+  // Add shuffled cards to the All Instruments section
+  shuffledInstruments.forEach((instrument) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    // Add the image
+    const img = document.createElement("img");
+    img.src = instrument.image;
+    img.alt = instrument.name;
+    card.appendChild(img);
+
+    // Add the instrument name
+    const name = document.createElement("h3");
+    name.classList.add("instrument-name");
+    name.textContent = instrument.name;
+    card.appendChild(name);
+
+    // Add the instrument type
+    const type = document.createElement("p");
+    type.classList.add("instrument-type");
+    type.textContent = instrument.instrumentType;
+    card.appendChild(type);
+
+    // Append the card to the All Instruments section
+    allInstrumentsContainer.appendChild(card);
+  });
+}
+
+function editCardContent(card, newInstrument, newImageURL, newType) {
   card.style.display = "block";
+
+  const cardImage = card.querySelector("img");
+  cardImage.src = newImageURL;
+  cardImage.alt = newInstrument;
 
   const cardHeader = card.querySelector("h2");
   cardHeader.textContent = newInstrument;
 
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newInstrument + " Poster";
+  const cardList = card.querySelector("ul");
+  cardList.innerHTML = ""; // Clear existing list items
+  const typeItem = document.createElement("li");
+  typeItem.textContent = newType; // This should show the type, not name!
+  cardList.appendChild(typeItem);
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
@@ -97,12 +237,12 @@ function editCardContent(card, newInstrument, newImageURL) {
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
 
-function quoteAlert() {
+/* function quoteAlert() {
   console.log("Button Clicked!");
   alert(
     "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
   );
-}
+} */
 
 function removeLastCard() {
   instruments.pop(); // Remove last item in titles array
