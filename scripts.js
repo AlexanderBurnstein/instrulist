@@ -1,250 +1,274 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
+// Array to hold the instrument data
+let instruments = [];
+// Loads my data.json file and displays the instrument cards on the website
+document.addEventListener("DOMContentLoaded", function () { // Waits for the DOM to load then run the code
+  fetch("data.json") // Fetches the data from the JSON file
+    .then(response => response.json()) // Converts data to JavaScript object
+    .then(data => { // Now we can use the data as it's a JavaScript object
+      instruments = data.instruments; // Stores the instruments data in the instruments array
+      showInstruments(instruments); // Run showCards function to display the instrument cards on webpage
+    });
+});
 
-// This is an array of Objects(instruments)
-let instruments = [
-  // Guitars
-  {
-    name: "Gibson Les Paul",
-    image: "InstrulistImages/LesPaul.png",
-    instrumentType: "Guitar"
-  },
-  {
-    name: "Taylor Acoustic Guitar",
-    image: "InstrulistImages/TaylorAcoustic.png",
-    instrumentType: "Guitar"
-  },
-  {
-    name: "Fender Stratocaster",
-    image: "InstrulistImages/FenderStrat.png",
-    instrumentType: "Guitar"
-  },
+// Add an input event listener to the search bar for real-time filtering
+document.getElementById('search-bar').addEventListener('input', function() {
+  const searchInput = this.value.toLowerCase();
+  // Check instrument array for matches on keywords
+  const filtered = instruments.filter(inst =>
+    inst.name.toLowerCase().includes(searchInput) ||
+    inst.instrumentType.toLowerCase().includes(searchInput) ||
+    (inst.yearReleased && inst.yearReleased.toString().includes(searchInput)) ||
+    (inst.price && inst.price.toLowerCase().includes(searchInput)) ||
+    (inst.genres && inst.genres.some(genre => genre.toLowerCase().includes(searchInput))) ||
+    (inst.artists && inst.artists.some(artist => artist.toLowerCase().includes(searchInput)))
+  );
+  // Show filtered instruments if we hit matches in our search
+  showInstruments(filtered);
+});
 
-  // Synthesizers
-  {
-    name: "Moog Minimoog",
-    image: "InstrulistImages/MiniMoog.png",
-    instrumentType: "Synthesizer"
-  },
-  {
-    name: "ARP 2600",
-    image: "InstrulistImages/ARP2600.png",
-    instrumentType: "Synthesizer"
-  },
-  {
-    name: "Roland Juno-106",
-    image: "InstrulistImages/Juno106.png",
-    instrumentType: "Synthesizer"
-  },
+// Add a button to clear instrument search bar and return to showing all instruments
+document.getElementById('clear-search-btn').addEventListener('click', function() {
+  document.getElementById('search-bar').value = "";
+  showInstruments(instruments);
+});
 
-  // Pianos
-  {
-    name: "Yamaha Upright Piano",
-    image: "InstrulistImages/UprightPiano.png",
-    instrumentType: "Piano"
-  },
-  {
-    name: "Steinway Grand Piano",
-    image: "InstrulistImages/SteinwayGrand.png",
-    instrumentType: "Piano"
-  },
-  {
-    name: "Wurlitzer 200",
-    image: "InstrulistImages/Wurlitzer200.png",
-    instrumentType: "Piano"
-  },
-  {
-    name: "Fender Rhodes",
-    image: "InstrulistImages/Fender Rhodes.png",
-    instrumentType: "Piano"
-  },
+// Add filters by instrument type, can multi select, except reset filter button
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  // Skip the reset button
+  if (btn.id === 'reset-filters-btn') return;
+  btn.addEventListener('click', function() {
+    btn.classList.toggle('active');
 
-  // Bass
-  {
-    name: "Fender Jazz Bass",
-    image: "InstrulistImages/FenderJazzBass.png",
-    instrumentType: "Bass"
-  },
-  {
-    name: "Fender Precision Bass",
-    image: "InstrulistImages/PBass.png",
-    instrumentType: "Bass"
-  },
-  {
-    name: "Upright Bass",
-    image: "InstrulistImages/UprightBass.png",
-    instrumentType: "Bass"
-  },
+    // Get all active filter buttons
+    const activeFilterButtons = Array.from(document.querySelectorAll('.filter-btn.active')).map(btn => btn.textContent);
 
-  // Drums
-  {
-    name: "Roland V-Drums",
-    image: "InstrulistImages/ElectricDrums.png",
-    instrumentType: "Drums"
-  },
-  {
-    name: "DW Drum Kit",
-    image: "InstrulistImages/DWDrums.png",
-    instrumentType: "Drums"
-  },
-  {
-    name: "Ludwig Drum Kit",
-    image: "InstrulistImages/LudwigDrums.png",
-    instrumentType: "Drums"
-  },
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
+    // If no filter buttons are active, show all instruments
+    if (activeFilterButtons.length === 0) {
+      showInstruments(instruments);
+      return;
+    }
 
-// Function to shuffle an array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    // Filter instruments by any active filter buttons
+    const filtered = instruments.filter(inst => activeFilterButtons.includes(inst.instrumentType));
+    showInstruments(filtered);
+  });
+});
+
+// Reset Filters button clears all filters and search on click
+document.getElementById('reset-filters-btn').addEventListener('click', function() {
+  document.getElementById('search-bar').value = "";
+  document.querySelectorAll('.filter-btn.active').forEach(btn => btn.classList.remove('active'));
+  showInstruments(instruments);
+});
+
+// Toggle filter dropdown menu on click
+document.getElementById('filter-menu-btn').addEventListener('click', function() {
+  document.getElementById('filter-menu').classList.toggle('show');
+});
+
+// Card Pop Up elements by thier names in html file
+const cardPopUp = document.getElementById('card-pop-up');
+const closeCardPopUpBtn = document.getElementById('close-card-pop-up-btn');
+const popUpImg = document.getElementById('pop-up-img');
+const popUpName = document.getElementById('pop-up-name');
+const popUpType = document.getElementById('pop-up-type');
+const popUpDetails = document.getElementById('pop-up-details');
+
+// Show card pop up with instrument data
+function showCardPopUp(instrument) {
+  // Set image source and alt text
+  popUpImg.src = instrument.image;
+  popUpImg.alt = instrument.name;
+  // Set name and type text
+  popUpName.textContent = instrument.name;
+  popUpType.textContent = instrument.instrumentType;
+  // Start building the details list
+  let details = "<ul class='modal-details-list'>";
+  // Only show each item if the data exists
+  if (instrument.price) {
+    details += "<li><strong>Price:</strong> " + instrument.price + "</li>";
   }
-  return array;
+  if (instrument.yearReleased) {
+    details += "<li><strong>Year Released:</strong> " + instrument.yearReleased + "</li>";
+  }
+  if (instrument.genres && instrument.genres.length > 0) {
+    details += "<li><strong>Genres:</strong> " + instrument.genres.join(", ") + "</li>";
+  }
+  if (instrument.artists && instrument.artists.length > 0) {
+    details += "<li><strong>Artists:</strong> " + instrument.artists.join(", ") + "</li>";
+  }
+  // Close the list
+  details += "</ul>";
+  // Show the instrument details in the popup
+  popUpDetails.innerHTML = details;
+  // Add event listener to for mouseclick to close the popup
+  closeCardPopUpBtn.addEventListener('click', function() {
+    cardPopUp.style.display = 'none';
+  });
+  // Make the popup show
+  cardPopUp.style.display = 'block';
 }
 
-// This function adds cards the page to display the data in the array
-function showCards() {
-  const allInstrumentsContainer = document.getElementById("all-instruments-cards");
-  const guitarCardsContainer = document.getElementById("guitar-cards");
-  const synthesizerCardsContainer = document.getElementById("synthesizer-cards");
-  const pianoCardsContainer = document.getElementById("piano-cards");
-  const bassCardsContainer = document.getElementById("bass-cards");
-  const drumCardsContainer = document.getElementById("drum-cards");
+// Close instrument pop up if you click outside the content
+cardPopUp.addEventListener('click', function(event) {
+  if (event.target === cardPopUp) {
+    cardPopUp.style.display = 'none';
+  }
+});
 
-  // Clear existing cards
-  allInstrumentsContainer.innerHTML = "";
-  guitarCardsContainer.innerHTML = "";
-  synthesizerCardsContainer.innerHTML = "";
-  pianoCardsContainer.innerHTML = "";
-  bassCardsContainer.innerHTML = "";
-  drumCardsContainer.innerHTML = "";
+// Function to create and display instrument cards
+function showInstruments(instrumentsToShow) {
+  // Clear all instrument card containers before adding new cards so old cards don't stay
+  document.getElementById('guitar-cards').innerHTML = "";
+  document.getElementById('synthesizer-cards').innerHTML = "";
+  document.getElementById('piano-cards').innerHTML = "";
+  document.getElementById('bass-cards').innerHTML = "";
+  document.getElementById('drum-cards').innerHTML = "";
 
-  // Shuffle the instruments array for the All Instruments section
-  const shuffledInstruments = shuffleArray([...instruments]);
+  instrumentsToShow.forEach(instrument => { // Loop through each instrument in the array
+    const cardContainer = document.createElement('div'); // Create a new div for the card
+    cardContainer.className = 'card'; // Give the div a class name for CSS styling
 
-  // Loop through the instruments array and add cards to the appropriate category
-  instruments.forEach((instrument) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
+    // Add Image
+    const img = document.createElement('img'); // Create an image element
+    img.src = instrument.image; // Set the image source to the instrument's image
+    img.alt = instrument.name; // Set alt text for accessibility
+    cardContainer.appendChild(img); // Add the image to the card
 
-    // Add the image
-    const img = document.createElement("img");
-    img.src = instrument.image;
-    img.alt = instrument.name;
-    card.appendChild(img);
+    // Add Name
+    const name = document.createElement('h3'); // Create a heading for the instrument name
+    name.className = 'instrument-name'; // Give it a class for CSS
+    name.textContent = instrument.name; // Set the text to the instrument's name
+    cardContainer.appendChild(name); // Add the name to the card
 
-    // Add the instrument name
-    const name = document.createElement("h3");
-    name.classList.add("instrument-name");
-    name.textContent = instrument.name;
-    card.appendChild(name);
+    // Add Type
+    const type = document.createElement('p'); // Create a paragraph for the instrument type
+    type.className = 'instrument-type'; // Give it a class for CSS
+    type.textContent = instrument.instrumentType; // Set the text to the instrument type
+    cardContainer.appendChild(type); // Add the type to the card
 
-    // Add the instrument type
-    const type = document.createElement("p");
-    type.classList.add("instrument-type");
-    type.textContent = instrument.instrumentType;
-    card.appendChild(type);
-
-    // Append the card to the appropriate category
+    // Decide which category to put the instrument card in based on instrument type
     if (instrument.instrumentType === "Guitar") {
-      guitarCardsContainer.appendChild(card);
+      document.getElementById('guitar-cards').appendChild(cardContainer);
     } else if (instrument.instrumentType === "Synthesizer") {
-      synthesizerCardsContainer.appendChild(card);
+      document.getElementById('synthesizer-cards').appendChild(cardContainer);
     } else if (instrument.instrumentType === "Piano") {
-      pianoCardsContainer.appendChild(card);
+      document.getElementById('piano-cards').appendChild(cardContainer);
     } else if (instrument.instrumentType === "Bass") {
-      bassCardsContainer.appendChild(card);
+      document.getElementById('bass-cards').appendChild(cardContainer);
     } else if (instrument.instrumentType === "Drums") {
-      drumCardsContainer.appendChild(card);
+      document.getElementById('drum-cards').appendChild(cardContainer);
+    }
+
+    // Add mouse click event to add instrument to build band
+    cardContainer.addEventListener('click', function(event) {
+      // Prevent build band shift-click from opening card pop up
+      if (event.shiftKey) return;
+      if (buildBandBtn.classList.contains('active')) {
+        // Add to Build a Band
+        if (!buildBandInstruments.includes(instrument)) {
+          buildBandInstruments.push(instrument);
+          updateBuildBand();
+        }
+        return;
+      }
+      showCardPopUp(instrument);
+    });
+  });
+
+  // After adding cards, hide categories with no cards
+  // Need this array so I can loop through each category and check if cards should be displayed
+  const categories = [
+    { categoryId: 'guitar-category', cardsId: 'guitar-cards' },
+    { categoryId: 'synthesizer-category', cardsId: 'synthesizer-cards' },
+    { categoryId: 'piano-category', cardsId: 'piano-cards' },
+    { categoryId: 'bass-category', cardsId: 'bass-cards' },
+    { categoryId: 'drum-category', cardsId: 'drum-cards' }
+  ];
+
+  // Loop through each category and check if there are any instrument cards in it
+  categories.forEach(categoryGroupTitle => {
+    const categoryDiv = document.getElementById(categoryGroupTitle.categoryId);
+    const cardsDiv = document.getElementById(categoryGroupTitle.cardsId);
+    // If there are no cards in the category, hide the categoryDiv (Category title on homepage)
+    if (cardsDiv.children.length === 0) {
+      categoryDiv.style.display = "none";
+    } else {
+      categoryDiv.style.display = "";
     }
   });
+}
 
-  // Add shuffled cards to the All Instruments section
-  shuffledInstruments.forEach((instrument) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
+// Build Band functionality
+const buildBandBtn = document.getElementById('build-band-btn');
+const buildBandCategory = document.getElementById('build-band-category');
+const buildBandCards = document.getElementById('build-band-cards');
+// Create an empty array to hold the instruments added to Build a Band
+let buildBandInstruments = [];
 
-    // Add the image
-    const img = document.createElement("img");
+// Create the Build a Band category on the homepage
+buildBandBtn.addEventListener('click', function() {
+  buildBandBtn.classList.toggle('active');
+  if (buildBandBtn.classList.contains('active')) {
+    buildBandCategory.style.display = "block";
+  } else {
+    // If Build a Band is not active, hide the category
+    buildBandCategory.style.display = "none";
+  }
+});
+  
+// Function to update the Build a Band category with the instruments added to it
+function updateBuildBand() {
+  buildBandCards.innerHTML = "";
+  buildBandInstruments.forEach((instrument, index) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    // Add Image
+    const img = document.createElement('img');
     img.src = instrument.image;
     img.alt = instrument.name;
     card.appendChild(img);
 
-    // Add the instrument name
-    const name = document.createElement("h3");
-    name.classList.add("instrument-name");
+    // Add Name
+    const name = document.createElement('h3');
+    name.className = 'instrument-name';
     name.textContent = instrument.name;
     card.appendChild(name);
 
-    // Add the instrument type
-    const type = document.createElement("p");
-    type.classList.add("instrument-type");
+    // Add Type
+    const type = document.createElement('p');
+    type.className = 'instrument-type';
     type.textContent = instrument.instrumentType;
     card.appendChild(type);
 
-    // Append the card to the All Instruments section
-    allInstrumentsContainer.appendChild(card);
+    // Shift-click to remove from Build a Band
+    card.addEventListener('click', function(shiftKeyEvent) {
+      if (shiftKeyEvent.shiftKey) {
+        // Remove shift-clicked instrument from Build a Band
+        buildBandInstruments.splice(index, 1);
+        // Update the Build a Band
+        updateBuildBand();
+      }
+    });
+
+    buildBandCards.appendChild(card);
   });
 }
 
-function editCardContent(card, newInstrument, newImageURL, newType) {
-  card.style.display = "block";
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newInstrument;
-
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newInstrument;
-
-  const cardList = card.querySelector("ul");
-  cardList.innerHTML = ""; // Clear existing list items
-  const typeItem = document.createElement("li");
-  typeItem.textContent = newType; // This should show the type, not name!
-  cardList.appendChild(typeItem);
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newInstrument, "- html: ", card);
-}
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
-
-/* function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
-} */
-
-function removeLastCard() {
-  instruments.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
-}
+// Soundbar EQ functionality
+// Do not fully understand this code but it is just for a cool visual effect
+document.addEventListener('DOMContentLoaded', () => {
+  const barCount = 128;
+  const soundbar = document.getElementById('soundbar-eq');
+  if (soundbar) {
+    for (let i = 0; i < barCount; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      // Randomize delay and duration for each bar
+      bar.style.animationDelay = `${(Math.random() * 1.7).toFixed(2)}s`;
+      bar.style.animationDuration = `${(1.2 + Math.random() * 1.5).toFixed(2)}s`;
+      soundbar.appendChild(bar);
+    }
+  }
+});

@@ -1,0 +1,212 @@
+{
+  "logoPath": "InstrulistImages/Instrulist.png",
+  "instruments": [
+    {
+      "name": "Fender Rhodes",
+      "image": "InstrulistImages/Fender Rhodes.png",
+      "instrumentType": "Piano",
+      "price": "$3,000 - $5,000",
+      "yearReleased": 1970,
+      "genres": ["Jazz", "Funk", "R&B"],
+      "artists": ["Herbie Hancock", "Stevie Wonder", "Chick Corea"]
+    },
+    {
+      "name": "ARP 2600",
+      "image": "InstrulistImages/ARP2600.png",
+      "instrumentType": "Synthesizer",
+      "price": "$4,000 - $6,000",
+      "yearReleased": 1971,
+      "genres": ["Electronic", "Experimental", "Rock"],
+      "artists": ["Stevie Wonder", "Edgar Winter", "Jean-Michel Jarre"]
+    },
+    {
+      "name": "Gibson SG",
+      "image": "InstrulistImages/GibsonSG.png",
+      "instrumentType": "Guitar",
+      "price": "$1,500 - $2,500",
+      "yearReleased": 1961,
+      "genres": ["Rock", "Blues", "Metal"],
+      "artists": ["Angus Young", "Tony Iommi", "Derek Trucks"]
+    },
+    {
+      "name": "Gibson Flying V",
+      "image": "InstrulistImages/GibsonFlyingV.png",
+      "instrumentType": "Guitar",
+      "price": "$1,800 - $3,500",
+      "yearReleased": 1958,
+      "genres": ["Rock", "Blues", "Metal"],
+      "artists": ["Albert King", "Jimi Hendrix", "Dave Davies"]
+    },
+    {
+      "name": "Moog Minimoog",
+      "image": "InstrulistImages/MiniMoog.png",
+      "instrumentType": "Synthesizer",
+      "price": "$3,500 - $5,000",
+      "yearReleased": 1970,
+      "genres": ["Electronic", "Funk", "Rock", "Pop"],
+      "artists": ["Kraftwerk", "Gary Numan", "ABBA", "Giorgio Moroder"]
+    },
+    {
+      "name": "Upright Bass",
+      "image": "InstrulistImages/UprightBass.png",
+      "instrumentType": "Bass",
+      "price": "$2,000 - $10,000",
+      "yearReleased": 1750,
+      "genres": ["Classical", "Jazz", "Bluegrass"],
+      "artists": ["Charles Mingus", "Ron Carter", "Esperanza Spalding"]
+    },
+    {
+      "name": "Fender Precision Bass",
+      "image": "InstrulistImages/PBass.png",
+      "instrumentType": "Bass",
+      "price": "$1,000 - $1,800",
+      "yearReleased": 1951,
+      "genres": ["Rock", "Blues", "Punk"],
+      "artists": ["James Jamerson", "Steve Harris", "Mike Dirnt"]
+    },
+    {
+      "name": "Yamaha Upright Piano",
+      "image": "InstrulistImages/UprightPiano.png",
+      "instrumentType": "Piano",
+      "price": "$3,000 - $8,000",
+      "yearReleased": 1960,
+      "genres": ["Classical", "Jazz", "Pop"],
+      "artists": ["Norah Jones", "Jamie Cullum", "Alicia Keys"]
+    },
+    {
+      "name": "Taylor Acoustic Guitar",
+      "image": "InstrulistImages/TaylorAcoustic.png",
+      "instrumentType": "Guitar",
+      "price": "$1,500 - $3,500",
+      "yearReleased": 1974,
+      "genres": ["Folk", "Country", "Pop", "Singer-Songwriter"],
+      "artists": ["Taylor Swift", "Jason Mraz", "Zac Brown"]
+    },
+    {
+      "name": "Steinway Grand Piano",
+      "image": "InstrulistImages/SteinwayGrand.png",
+      "instrumentType": "Piano",
+      "price": "$60,000 - $150,000",
+      "yearReleased": 1853,
+      "genres": ["Classical", "Jazz", "Pop"],
+      "artists": ["Lang Lang", "Billy Joel", "Diana Krall"]
+    },
+    {
+      "name": "Fender Telecaster",
+      "image": "InstrulistImages/FenderTelecaster.png",
+      "instrumentType": "Guitar",
+      "price": "$1,000 - $2,500",
+      "yearReleased": 1951,
+      "genres": ["Country", "Rock", "Blues", "Pop"],
+      "artists": ["Bruce Springsteen", "Keith Richards", "Chrissie Hynde"]
+    },
+    {
+      "name": "Fender Stratocaster",
+      "image": "InstrulistImages/FenderStrat.png",
+      "instrumentType": "Guitar",
+      "price": "$1,000 - $2,500",
+      "yearReleased": 1954,
+      "genres": ["Rock", "Blues", "Funk", "Pop"],
+      "artists": ["Jimi Hendrix", "Eric Clapton", "John Mayer", "David Gilmour"]
+    },
+    {
+      "name": "Gibson Les Paul",
+      "image": "InstrulistImages/LesPaul.png",
+      "instrumentType": "Guitar",
+      "price": "$2,500 - $4,000",
+      "yearReleased": 1952,
+      "genres": ["Rock", "Blues", "Jazz", "Metal"],
+      "artists": ["Jimmy Page", "Slash", "Joe Perry", "Zakk Wylde"]
+    },
+    {
+      "name": "DW Drum Kit",
+      "image": "InstrulistImages/DWDrums.png",
+      "instrumentType": "Drums",
+      "price": "$2,000 - $5,000",
+      "yearReleased": 1972,
+      "genres": ["Rock", "Jazz", "Fusion"],
+      "artists": ["Dave Grohl", "Chad Smith", "Terry Bozzio"]
+    },
+    {
+      "name": "Roland Juno-106",
+      "image": "InstrulistImages/Juno106.png",
+      "instrumentType": "Synthesizer",
+      "price": "$1,200 - $2,000",
+      "yearReleased": 1984,
+      "genres": ["Synthpop", "Electronic", "House"],
+      "artists": ["Vince Clarke", "Tame Impala", "Calvin Harris"]
+    },
+    {
+      "name": "Roland V-Drums",
+      "image": "InstrulistImages/ElectricDrums.png",
+      "instrumentType": "Drums",
+      "price": "$1,500 - $4,500",
+      "yearReleased": 1997,
+      "genres": ["Electronic", "Pop", "Rock"],
+      "artists": ["Neil Peart", "Travis Barker", "Danny Carey"]
+    },
+    {
+      "name": "Fender Jazz Bass",
+      "image": "InstrulistImages/FenderJazzBass.png",
+      "instrumentType": "Bass",
+      "price": "$1,200 - $2,000",
+      "yearReleased": 1960,
+      "genres": ["Jazz", "Funk", "Rock"],
+      "artists": ["Jaco Pastorius", "Geddy Lee", "Marcus Miller"]
+    },
+    {
+      "name": "Ludwig Drum Kit",
+      "image": "InstrulistImages/LudwigDrums.png",
+      "instrumentType": "Drums",
+      "price": "$1,200 - $3,000",
+      "yearReleased": 1909,
+      "genres": ["Rock", "Jazz", "Pop"],
+      "artists": ["Ringo Starr", "John Bonham", "Phil Collins"]
+    },
+    {
+      "name": "Mellotron4000D",
+      "image": "InstrulistImages/Mellotron.png",
+      "instrumentType": "Synthesizer",
+      "price": "$8,000 - $15,000",
+      "yearReleased": 1963,
+      "genres": ["Progressive Rock", "Psychedelic", "Experimental"],
+      "artists": ["The Beatles", "King Crimson", "Genesis"]
+    },
+    {
+      "name": "Gibson Explorer",
+      "image": "InstrulistImages/GibsonExplorer.png",
+      "instrumentType": "Guitar",
+      "price": "$1,500 - $3,000",
+      "yearReleased": 1958,
+      "genres": ["Rock", "Metal", "Hard Rock"],
+      "artists": ["James Hetfield", "The Edge", "Allen Collins"]
+    },
+    {
+      "name": "Korg MS-20",
+      "image": "InstrulistImages/KorgMS20.png",
+      "instrumentType": "Synthesizer",
+      "price": "$1,000 - $1,500",
+      "yearReleased": 1978,
+      "genres": ["Electronic", "Experimental", "Techno"],
+      "artists": ["Aphex Twin", "The Chemical Brothers", "MGMT"]
+    },
+    {
+      "name": "Wurlitzer 200",
+      "image": "InstrulistImages/Wurlitzer200.png",
+      "instrumentType": "Piano",
+      "price": "$1,000 - $3,000",
+      "yearReleased": 1954,
+      "genres": ["Rock", "Soul", "Pop"],
+      "artists": ["Ray Charles", "Supertramp", "Ben Folds"]
+    },
+    {
+      "name": "Fazioli Grand Piano",
+      "image": "InstrulistImages/FazioliPiano.png",
+      "instrumentType": "Piano",
+      "price": "$100,000 - $200,000",
+      "yearReleased": 1981,
+      "genres": ["Classical", "Jazz"],
+      "artists": ["Herbie Hancock", "Angela Hewitt", "Hiromi Uehara"]
+    }
+  ]
+}
