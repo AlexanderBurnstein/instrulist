@@ -3,6 +3,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
   background-color: black;
   font-family: 'League Spartan', sans-serif;
   font-weight: 400;
@@ -61,7 +64,7 @@ body {
 
 #search-bar::placeholder {
   color: rgba(255, 255, 255, 0.55);
-  opacity: 1; /* Ensures it's not semi-transparent */
+  opacity: 1;
 }
 
 .clear-search-btn {
@@ -413,10 +416,10 @@ body {
   color: #fff;
   border-radius: 20px;
   padding: 40px 48px 32px 48px;
-  min-width: 400px;
-  max-width: 95vw;
+  width: 420px;
+  max-width: 95vw; 
   max-height: 95vh;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -435,11 +438,13 @@ body {
   margin: 0 0 10px 0;
   font-family: 'League Spartan', sans-serif;
   font-weight: 700;
+  color: #f97000;
+  
 }
 
 #pop-up-type {
-  font-size: 1.3rem;
-  color: #ffae42;
+  font-size: 1.6rem;
+  color: #ffa55c;
   margin: 0 0 18px 0;
   font-family: 'League Spartan', sans-serif;
   font-weight: 600;

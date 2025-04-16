@@ -207,6 +207,114 @@
       "yearReleased": 1981,
       "genres": ["Classical", "Jazz"],
       "artists": ["Herbie Hancock", "Angela Hewitt", "Hiromi Uehara"]
+    },
+    {
+      "name": "PRS Custom 24",
+      "image": "InstrulistImages/PRSCustom.png",
+      "instrumentType": "Guitar",
+      "price": "$3,500 - $5,000",
+      "yearReleased": 1985,
+      "genres": ["Rock", "Blues", "Jazz", "Fusion"],
+      "artists": ["Mark Tremonti", "Carlos Santana", "John Mayer"]
+    },
+    {
+      "name": "Yamaha DX7",
+      "image": "InstrulistImages/YamahaDX7.png",
+      "instrumentType": "Synthesizer",
+      "price": "$2,000 - $3,000",
+      "yearReleased": 1983,
+      "genres": ["Synthpop", "Electronic", "Pop", "Jazz"],
+      "artists": ["Brian Eno", "Phil Collins", "Toto"]
+    },
+    {
+      "name": "Moog Voyager",
+      "image": "InstrulistImages/MoogVoyager.png",
+      "instrumentType": "Synthesizer",
+      "price": "$3,500 - $5,000",
+      "yearReleased": 2002,
+      "genres": ["Electronic", "Rock", "Funk", "Experimental"],
+      "artists": ["Jean-Michel Jarre", "Trent Reznor", "Rick Smith"]
+    },
+    {
+      "name": "Bosendorfer Grand Piano",
+      "image": "InstrulistImages/Bosendorfer.png",
+      "instrumentType": "Piano",
+      "price": "$150,000 - $300,000",
+      "yearReleased": 1828,
+      "genres": ["Classical", "Jazz", "Pop"],
+      "artists": ["Daniel Barenboim", "András Schiff", "Murray Perahia"]
+    },
+    {
+      "name": "Hammond Organ",
+      "image": "InstrulistImages/HammondOrgan.png",
+      "instrumentType": "Piano",
+      "price": "$3,000 - $8,000",
+      "yearReleased": 1935,
+      "genres": ["Jazz", "Blues", "Rock", "Gospel"],
+      "artists": ["Jimmy Smith", "Booker T. Jones", "Rick Wakeman"]
+    },
+    {
+      "name": "Moog Theremin",
+      "image": "InstrulistImages/MoogTheremin.png",
+      "instrumentType": "Synthesizer",
+      "price": "$1,200 - $2,000",
+      "yearReleased": 2000,
+      "genres": ["Electronic", "Experimental", "Ambient"],
+      "artists": ["Clara Rockmore", "Lydia Kavina", "Caroline Kraabel"]
+    },
+    {
+      "name": "Hofner Bass",
+      "image": "InstrulistImages/HofnerBass.png",
+      "instrumentType": "Bass",
+      "price": "$1,000 - $2,000",
+      "yearReleased": 1956,
+      "genres": ["Rock", "Pop", "Jazz"],
+      "artists": ["Paul McCartney", "Stuart Sutcliffe"]
+    },
+    {
+      "name": "Rickenbacker Bass",
+      "image": "InstrulistImages/RickenbackerBass.png",
+      "instrumentType": "Bass",
+      "price": "$2,500 - $4,500",
+      "yearReleased": 1961,
+      "genres": ["Rock", "Progressive Rock"],
+      "artists": ["Chris Squire", "Geddy Lee", "Roger Glover"]
+    },
+    {
+      "name": "Yamaha Bass",
+      "image": "InstrulistImages/Yamahabass.png",
+      "instrumentType": "Bass",
+      "price": "$800 - $1,500",
+      "yearReleased": 1970,
+      "genres": ["Rock", "Jazz", "Funk"],
+      "artists": ["Larry Graham", "Duff McKagan", "Victor Wooten"]
+    },
+    {
+      "name": "Congas",
+      "image": "InstrulistImages/congas.png",
+      "instrumentType": "Drums",
+      "price": "$300 - $800",
+      "yearReleased": 1900,
+      "genres": ["Latin", "Jazz", "Afro-Cuban"],
+      "artists": ["Mongo Santamaría", "Carmelo La Bionda", "Eddie Palmieri"]
+    },
+    {
+      "name": "Gretsch Drum Kit",
+      "image": "InstrulistImages/Gretschdrums.png",
+      "instrumentType": "Drums",
+      "price": "$2,000 - $6,000",
+      "yearReleased": 1950,
+      "genres": ["Rock", "Jazz", "Country"],
+      "artists": ["Max Weinberg", "Travis Barker", "Ginger Baker"]
+    },
+    {
+      "name": "Djembe",
+      "image": "InstrulistImages/Djembe.png",
+      "instrumentType": "Drums",
+      "price": "$100 - $500",
+      "yearReleased": 1200,
+      "genres": ["Traditional", "World", "African"],
+      "artists": ["Mamady Keïta", "Famoudou Konaté", "Soungalo Coulibaly"]
     }
   ]
 }

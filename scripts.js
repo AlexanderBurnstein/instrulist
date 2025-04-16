@@ -106,7 +106,7 @@ function showCardPopUp(instrument) {
     cardPopUp.style.display = 'none';
   });
   // Make the popup show
-  cardPopUp.style.display = 'block';
+  cardPopUp.style.display = 'flex';
 }
 
 // Close instrument pop up if you click outside the content
