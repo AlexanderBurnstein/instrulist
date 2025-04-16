@@ -128,6 +128,7 @@ function showInstruments(instrumentsToShow) {
   instrumentsToShow.forEach(instrument => { // Loop through each instrument in the array
     const cardContainer = document.createElement('div'); // Create a new div for the card
     cardContainer.className = 'card'; // Give the div a class name for CSS styling
+    cardContainer.tabIndex = 0; // Make the card tab-able
 
     // Add Image
     const img = document.createElement('img'); // Create an image element
@@ -223,6 +224,7 @@ function updateBuildBand() {
   buildBandInstruments.forEach((instrument, index) => {
     const card = document.createElement('div');
     card.className = 'card';
+    card.tabIndex = 0; // Make the card focusable
 
     // Add Image
     const img = document.createElement('img');
